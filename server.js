@@ -1,4 +1,5 @@
-var express = require('express');
+//importing packages
+var express = require('express'); //library used to create the webserver, (how to listen to ports, handling http connections) 
 var morgan = require('morgan');
 var path = require('path');
 
