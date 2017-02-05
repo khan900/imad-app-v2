@@ -1,6 +1,7 @@
 //importing packages
 var express = require('express'); //library used to create the webserver, (how to listen to ports, handling http connections) 
 var morgan = require('morgan'); //to help us output log sof our server, so that we know what requests are coming to server & how we're responding
+var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
