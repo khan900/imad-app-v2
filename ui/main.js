@@ -23,7 +23,8 @@ button.onclick = function()
     };
     
     //make  a request
-    
+   request.open("GET","http://khan900.imad.hasura-app.io/counter",true); //readystate changes
+  request.send(null);
     
     
     
