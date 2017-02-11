@@ -9,5 +9,5 @@ elem.innerHTML = "This is a new value - modified by JS";
 var img = document.getElementById('madi');
 
 img.onclick = function(){
-    img.style.marginLeft = 100;
+    img.style.marginLeft = '100px';
 };
