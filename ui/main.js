@@ -9,7 +9,7 @@ button.onclick = function()
     
     //capture the response & Store it in a variable
     request.onreadystatechange = function(){
-        if(request.readystate === XMLHTTPRequest.DONE)
+        if(request.readyState === XMLHTTPRequest.DONE)
         {
             //take some action
             if(request.status===200)
@@ -24,7 +24,7 @@ button.onclick = function()
     
     //make  a request
    request.open("GET","http://khan900.imad.hasura-app.io/counter",true); //readystate changes
-  request.send(null);
+   request.send(null);
     
     
     
