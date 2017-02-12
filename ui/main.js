@@ -31,3 +31,22 @@ button.onclick = function()
     
     
 };
+
+//submit
+var submit = document.getElementById('btn-submit');
+var inputName = document.getElementById('name');
+var name = inputName.value;
+
+submit.onclick = function(){
+  //Make a request and send the name to the server
+  
+  //capture the received names and render it as list
+  names = ['khan','Mumtaz','Maroof','Shahbaz'];
+  var list = '';
+  for(var i = 0; i < names.length; i++){
+      list += "<li>" + names[i]  + "</li>";
+  }
+  ul = document.getElementById('namelist');
+  ul.innerHTML = list;
+  
+};
