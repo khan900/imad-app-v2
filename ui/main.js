@@ -34,19 +34,40 @@ button.onclick = function()
 
 //submit
 var submit = document.getElementById('btn-submit');
-var inputName = document.getElementById('name');
-var name = inputName.value;
+
 
 submit.onclick = function(){
   //Make a request and send the name to the server
+  var request = new  XMLHttpRequest();
+    
+    //capture the response 
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE)
+        {
+            //take some action
+            if(request.status===200)
+            {
+                //capture the received names and render it as list
+                names = request.resonseText;
+                names = JSON.parse(names);
+                var list = '';
+                  for(var i = 0; i < names.length; i++){
+                      list += "<li>" + names[i]  + "</li>";
+                  }
+                  ul = document.getElementById('namelist');
+                  ul.innerHTML = list;
+            }
+        }
+            //not done yet
+    };
+    var inputName = document.getElementById('name');
+    var name = inputName.value;    //extract only when clicked
+    //make  a request
+   request.open("GET","http://khan900.imad.hasura-app.io/submit-name?name="+name,true); //readystate changes
+   request.send(null);
+    
   
-  //capture the received names and render it as list
-  names = ['khan','Mumtaz','Maroof','Shahbaz'];
-  var list = '';
-  for(var i = 0; i < names.length; i++){
-      list += "<li>" + names[i]  + "</li>";
-  }
-  ul = document.getElementById('namelist');
-  ul.innerHTML = list;
+  
+  
   
 };
