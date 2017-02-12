@@ -117,6 +117,18 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 
+var names=[];
+//oneway of getting data as part of URL & sending info back as JSON 
+app.get('/submitname/:name', function(req,res){
+    //get the name from request & store it
+    var name = req.params.name;
+    names.push(name);
+    
+    //sendthe stored information back
+    //JSON - way of converting JS object into string
+    res.send(JSON.stringify(names));
+});
+
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
