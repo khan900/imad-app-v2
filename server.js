@@ -79,6 +79,7 @@ function createTemplate(data){
                 ${content}
             </div>
             <hr>
+            <h2>Comments</h2>
             <textarea rows="5" cols="10" style="resize:none"  id="comments"></textarea>
             <input type="submit" value="Comment" id="btn-submit">
             <script type="text/javascript" src="/ui/main.js">
