@@ -95,6 +95,20 @@ app.get('/counter', function (req, res) {
   res.send(counter.toString());
 });
 
+var names=[];
+//oneway of getting data as part of URL & sending info back as JSON 
+app.get('/submit-name/', function(req,res){
+    
+    //URL  : /submit-name?name=xyz          another-way:/submit-name/:name - part of URL
+    //get the name from request & store it
+    var name = req.query.name;
+    names.push(name);
+    
+    //sendthe stored information back
+    //JSON - way of converting JS object into string
+    res.send(JSON.stringify(names));
+});
+
 app.get('/:articleName', function (req,res){
     //articleName = article-one
     //articles[articleName] -> {} content object for article one
@@ -117,17 +131,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 
-var names=[];
-//oneway of getting data as part of URL & sending info back as JSON 
-app.get('/submitname/:name', function(req,res){
-    //get the name from request & store it
-    var name = req.params.name;
-    names.push(name);
-    
-    //sendthe stored information back
-    //JSON - way of converting JS object into string
-    res.send(JSON.stringify(names));
-});
+
 
 
 
