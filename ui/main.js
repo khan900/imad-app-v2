@@ -49,7 +49,7 @@ submit.onclick = function(){
             {
                 //capture the received names and render it as list
                 var names = request.resonseText;
-                console.log(names + '' + type(names));
+                console.log(names );
                 names = JSON.parse(names);
                 var list = '';
                   for(var i = 0; i < names.length; i++){
