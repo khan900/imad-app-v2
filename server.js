@@ -21,6 +21,8 @@ var articles = {
             <p>
                 This is my first article. I am so excited ! This is my first article. I am so excited !This is my first article. I am so excited ! This is my first article. I am so excited ! This is my first article. I am so excited !
             </p>
+            
+            
       `
     
         },
@@ -76,6 +78,12 @@ function createTemplate(data){
             <div>
                 ${content}
             </div>
+            <hr>
+            <textarea rows="5" cols="10" style="resize:none"  id="comments"></textarea>
+            <input type="submit" value="Comment" id="btn-submit">
+            <script type="text/javascript" src="/ui/main.js">
+            </script>
+            
         </div>
     </body>
 </html>
