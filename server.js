@@ -89,7 +89,39 @@ function createTemplate(data){
             
             
         </div>
-        <script type="text/javascript" src="/ui/main.js">
+        <script >
+            //comments display
+            var comm_submit = document.getElementById('comment-submit');
+            comm_submit.onclick = function(){
+                var commentBox = document.getElementById('comment');
+                var comment = commentBox.value;
+                
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function(){
+                    if(request.status === XMLHttpRequest.DONE)
+                    {
+                        if(request.status === 200)
+                        {
+                            var comments = responseText;
+                            comments = JSON.parse(comments);
+                            var section = '';
+                            for(var i = 0; i<comments.length; i++){
+                                section = section + '<div>' + comments[i] + '</div>';
+                            }
+                            div = document.getElementById('comments-display');
+                            div.innerHTML = section;
+                        }
+                    }
+                    
+                };
+                
+                request.open('GET', 'http://khan900.imad.hasura-app.io/submit-comment?comment='+comment,true);
+                request.send(null);
+                
+                
+                
+                
+            };    
         </script>
     </body>
 </html>
