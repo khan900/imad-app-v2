@@ -102,7 +102,7 @@ function createTemplate(data){
                     {
                         if(request.status === 200)
                         {
-                            var comments = responseText;
+                            var comments = request.responseText;
                             comments = JSON.parse(comments);
                             var section = '';
                             for(var i = 0; i<comments.length; i++){
