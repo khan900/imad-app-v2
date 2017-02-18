@@ -82,12 +82,15 @@ function createTemplate(data){
             <h2>Comments</h2>
             <textarea rows="5"  style="resize:none;width:60%"  id="comment"></textarea><br>
             <input type="submit" value="Comment" style="margin-left:48%;" id="comment-submit">
+            <hr/>
             <div id="comments-display">
+                
             </div>
-            <script type="text/javascript" src="/ui/main.js">
-            </script>
+            
             
         </div>
+        <script type="text/javascript" src="/ui/main.js">
+        </script>
     </body>
 </html>
     `;
