@@ -88,7 +88,7 @@ comm_submit.onclick = function(){
             {
                 var comments = responseText;
                 comments = JSON.parse(comments);
-                var section = '<h2>Comments</h2>';
+                var section = '';
                 for(var i = 0; i<comments.length; i++){
                     section = section + '<div>' + comments[i] + '</div>';
                 }
