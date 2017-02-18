@@ -106,7 +106,7 @@ function createTemplate(data){
                             comments = JSON.parse(comments);
                             var section = '';
                             for(var i = 0; i<comments.length; i++){
-                                section = section + '<div>' + comments[i] + '</div>';
+                                section = section + '<div>' + comments[i] + '</div><hr>';
                             }
                             div = document.getElementById('comments-display');
                             div.innerHTML = section;
