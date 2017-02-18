@@ -15,7 +15,7 @@ button.onclick = function()
             if(request.status===200)
             {
                 var counter = request.responseText;
-                
+                //render variable in correct span
                 var span = document.getElementById('count');
                 span.innerHTML = counter.toString();
             }
@@ -37,10 +37,13 @@ var submit = document.getElementById('btn-submit');
 
 
 submit.onclick = function(){
+    var inputName = document.getElementById('name');
+    var name = inputName.value;    //extract only when clicked
+    
   //Make a request and send the name to the server
   var request = new  XMLHttpRequest();
     
-    //capture the response 
+    //capture the list of name & render  it as a list 
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE)
         {
@@ -50,7 +53,7 @@ submit.onclick = function(){
                 //capture the received names and render it as list
                 var names = request.responseText;
                 
-                names = JSON.parse(names);
+                names = JSON.parse(names); //converting string back into array object
                 var list = '';
                   for(var i = 0; i < names.length; i++){
                       list += "<li>" + names[i]  + "</li>";
@@ -61,14 +64,45 @@ submit.onclick = function(){
         }
             //not done yet
     };
-    var inputName = document.getElementById('name');
-    var name = inputName.value;    //extract only when clicked
+    
     //make  a request
    request.open("GET","http://khan900.imad.hasura-app.io/submit-name?name="+name,true); //readystate changes
    request.send(null);
     
   
-  
-  
-  
 };
+
+
+
+//comments display
+var comm_submit = document.getElementById('comment-submit');
+comm_submit.onclick = function(){
+    var commentBox = document.getElementById('comment');
+    var comment = commentBox.value;
+    
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.status === XMLHttpRequest.DONE)
+        {
+            if(request.status === 200)
+            {
+                var comments = responseText;
+                comments = JSON.parse(comments);
+                var section = '<h2>Comments</h2>';
+                for(var i = 0; i<comments.length; i++){
+                    section = section + '<div>' + comments[i] + '</div>';
+                }
+                div = document.getElementById('comments-display');
+                div.innerHTML = section;
+            }
+        }
+        
+    };
+    
+    request.open('GET', 'http://khan900.imad.hasura-app.io/submit-comment?comment='+comment,true);
+    request.send(null);
+    
+    
+    
+    
+};    
