@@ -80,8 +80,10 @@ function createTemplate(data){
             </div>
             <hr>
             <h2>Comments</h2>
-            <textarea rows="5"  style="resize:none;width:60%"  id="comments"></textarea><br>
-            <input type="submit" value="Comment" style="margin-left:48%;" id="btn-submit">
+            <textarea rows="5"  style="resize:none;width:60%"  id="comment"></textarea><br>
+            <input type="submit" value="Comment" style="margin-left:48%;" id="comment-submit">
+            <div id="comments-display">
+            </div>
             <script type="text/javascript" src="/ui/main.js">
             </script>
             
@@ -104,11 +106,18 @@ app.get('/counter', function (req, res) {
   res.send(counter.toString());
 });
 
+var comments = [];
+app.get('/submit-comment/',function(req,res){
+    var comment = req.query.comment;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
+});
+
 var names=[];
 //oneway of getting data as part of URL & sending info back as JSON 
-app.get('/submit-name/', function(req,res){
+app.get('/submit-name/', function(req,res){//URL  : /submit-name?name=xyz
     
-    //URL  : /submit-name?name=xyz          another-way:/submit-name/:name - part of URL
+             // another-way:/submit-name/:name - part of URL
     //get the name from request & store it
     var name = req.query.name;
     names.push(name);
