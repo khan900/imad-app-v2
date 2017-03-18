@@ -2,6 +2,16 @@
 var express = require('express'); //library used to create the webserver, (how to listen to ports, handling http connections) 
 var morgan = require('morgan'); //to help us output log sof our server, so that we know what requests are coming to server & how we're responding
 var path = require('path');
+var Pool = require('pg').Pool;
+
+var config = {
+    user: 'khan900',
+    database:'khan900',
+    host: 'db.imad.hasura-app.io',
+    port:'5432',
+    password: process.env.DB_PASSWORD
+};
+
 
 var app = express();
 app.use(morgan('combined'));
@@ -134,6 +144,23 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+var pool = new Pool(config);
+
+app.get('/test-db',function(req, res) {
+   //make a select request
+   //return response with  result
+   pool.query('SELECT * FROM test',function(err,result){
+       if(err){
+           err.status(500).send(err.toString());
+       }
+       else{
+           res.send(JSON.stringify(result));
+       }
+       
+   });
+});
+
 
 var counter = 0;
 app.get('/counter', function (req, res) {
